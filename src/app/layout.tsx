@@ -15,6 +15,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Roacs Corporation",
   description: "Boutique Business Technology Partner providing IT/AI services, Snowflake Data Cloud, Business Process Automation, and TaaS.",
+  icons: {
+    icon: "/roacs-logo.png",
+    shortcut: "/roacs-logo.png",
+    apple: "/roacs-logo.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
