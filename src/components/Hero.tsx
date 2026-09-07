@@ -47,7 +47,10 @@ function AnimatedFeatureIcon({
   item: typeof FEATURE_ITEMS[0];
 }) {
   return (
-    <div className="relative shrink-0 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
+    <div
+      style={{ aspectRatio: "1 / 1" }}
+      className="relative flex-none w-10 h-10 sm:w-11 sm:h-11 2xl:w-12 2xl:h-12 aspect-square flex items-center justify-center"
+    >
       {/* Clean, visible beacon ping when active */}
       {active && (
         <>
@@ -55,6 +58,7 @@ function AnimatedFeatureIcon({
           <motion.span
             animate={{ opacity: [0.12, 0.28, 0.12] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            style={{ aspectRatio: "1 / 1" }}
             className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.gradient} filter blur-[3px] pointer-events-none`}
           />
           {/* Smooth expanding radar ring that loops seamlessly with zero flashing */}
@@ -69,14 +73,16 @@ function AnimatedFeatureIcon({
               ease: "easeInOut",
               times: [0, 0.35, 1],
             }}
+            style={{ aspectRatio: "1 / 1" }}
             className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.gradient} pointer-events-none`}
           />
         </>
       )}
 
-      {/* Main Gradient Icon Circle */}
+      {/* Main Gradient Icon Circle - Guaranteed 100% Circular 1:1 Aspect Ratio */}
       <div
-        className={`relative z-10 w-9 h-9 sm:w-10 sm:h-10 2xl:w-11 2xl:h-11 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md ${item.shadow} transition-transform duration-300 ${
+        style={{ aspectRatio: "1 / 1" }}
+        className={`relative z-10 w-full h-full aspect-square rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md ${item.shadow} transition-transform duration-300 flex-none ${
           active ? "scale-105" : "group-hover:scale-105"
         }`}
       >
@@ -88,8 +94,9 @@ function AnimatedFeatureIcon({
                 : { scale: 1 }
             }
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            className="flex items-center justify-center leading-none"
           >
-            <Smartphone className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
+            <Smartphone className="w-5 h-5 sm:w-5 sm:h-5 2xl:w-6 2xl:h-6 block shrink-0" />
           </motion.div>
         )}
 
@@ -105,8 +112,9 @@ function AnimatedFeatureIcon({
                 ? { duration: 5, repeat: Infinity, ease: "linear" }
                 : { duration: 3, repeat: Infinity, ease: "easeInOut" }
             }
+            className="flex items-center justify-center leading-none"
           >
-            <Settings className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
+            <Settings className="w-5 h-5 sm:w-5 sm:h-5 2xl:w-6 2xl:h-6 block shrink-0" />
           </motion.div>
         )}
 
@@ -118,8 +126,9 @@ function AnimatedFeatureIcon({
                 : { scale: 1, rotate: 0 }
             }
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            className="flex items-center justify-center leading-none"
           >
-            <Headset className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
+            <Headset className="w-5 h-5 sm:w-5 sm:h-5 2xl:w-6 2xl:h-6 block shrink-0" />
           </motion.div>
         )}
       </div>
@@ -405,15 +414,15 @@ export default function Hero() {
 
             {/* Animated Feature Strip */}
             <div className="mt-7 sm:mt-8 2xl:mt-10 w-full">
-              {/* Desktop 3-column with spacious layout */}
-              <div className="hidden sm:flex sm:items-center gap-6 md:gap-8 lg:gap-8 xl:gap-10 2xl:gap-12">
+              {/* Desktop 3-column with spacious layout and clean wrapping on compact screens */}
+              <div className="hidden sm:flex sm:flex-wrap items-center gap-4 sm:gap-6 lg:gap-5 xl:gap-8 2xl:gap-10">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
                     <div
                       key={item.id}
                       onMouseEnter={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-3.5 py-1.5 cursor-pointer group"
+                      className="flex items-center gap-3.5 py-1.5 cursor-pointer group flex-none"
                     >
                       <AnimatedFeatureIcon active={isActive} item={item} />
                       <div className="text-left">
@@ -427,14 +436,14 @@ export default function Hero() {
               </div>
 
               {/* Mobile clean flex wrap centered */}
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3.5 sm:hidden">
+              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:hidden">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
                     <div
                       key={item.id}
                       onClick={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-2.5 py-1 cursor-pointer"
+                      className="flex items-center gap-2.5 py-1 cursor-pointer flex-none"
                     >
                       <AnimatedFeatureIcon active={isActive} item={item} />
                       <div className="text-left min-w-0">
