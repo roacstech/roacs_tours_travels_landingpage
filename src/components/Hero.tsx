@@ -58,11 +58,14 @@ function AnimatedFeatureIcon({
   const Icon = item.icon;
 
   return (
-    <div className="relative shrink-0 flex items-center justify-center">
-      {/* Radiating Beacon Halo Ring when active */}
+    <div className="relative shrink-0 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
+      {/* Gentle, contained radiating pulse that stays well within bounds */}
       {active && (
-        <span
-          className={`absolute -inset-0.5 rounded-full bg-gradient-to-br ${item.gradient} animate-ping opacity-35 pointer-events-none`}
+        <motion.span
+          initial={{ scale: 0.95, opacity: 0.5 }}
+          animate={{ scale: 1.25, opacity: 0 }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
+          className={`absolute inset-0.5 rounded-full bg-gradient-to-br ${item.gradient} pointer-events-none`}
         />
       )}
 
@@ -275,11 +278,11 @@ export default function Hero() {
                     <div
                       key={item.id}
                       onMouseEnter={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-2.5 py-1 cursor-pointer group"
+                      className="flex items-center gap-3.5 py-1 cursor-pointer group"
                     >
                       <AnimatedFeatureIcon idx={idx} active={isActive} item={item} />
                       <div className="text-left">
-                        <div className="text-xs sm:text-[13px] font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors">
+                        <div className="text-xs sm:text-[13px] font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors whitespace-nowrap">
                           {item.label}
                         </div>
                       </div>
@@ -289,14 +292,14 @@ export default function Hero() {
               </div>
 
               {/* Mobile clean 2x2 grid */}
-              <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:hidden">
+              <div className="grid grid-cols-2 gap-x-5 gap-y-3 sm:hidden">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
                     <div
                       key={item.id}
                       onClick={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-2.5 py-1 cursor-pointer"
+                      className="flex items-center gap-3 py-1 cursor-pointer"
                     >
                       <AnimatedFeatureIcon idx={idx} active={isActive} item={item} />
                       <div className="text-left min-w-0">
