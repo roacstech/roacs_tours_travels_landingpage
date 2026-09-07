@@ -4,24 +4,24 @@ import WorldMap from "@/components/ui/world-map";
 
 export function WorldMapDemo() {
   return (
-    <section className="w-full pt-2 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 bg-slate-50/50">
+    <section className="w-full pt-2 pb-4 sm:pb-6 px-4 sm:px-6 lg:px-8 2xl:px-12 bg-slate-50/50">
       
       {/* Contained Laser-Etched Line */}
-      <div className="max-w-5xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-300/80 to-transparent mb-6 sm:mb-8" />
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto h-px bg-gradient-to-r from-transparent via-slate-300/80 to-transparent mb-6 sm:mb-8" />
 
       {/* Elevated Editorial Header */}
-      <div className="flex flex-col items-center justify-center mb-6 sm:mb-8 px-4 text-center">
-        <div className="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200/90 shadow-2xs mb-2">
-          <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-slate-700">
+      <div className="flex flex-col items-center justify-center mb-8 sm:mb-12 px-4 text-center">
+        <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-sm mb-3">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700">
             Global Footprint
           </span>
         </div>
-        <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-900 max-w-xl mx-auto leading-snug">
+        <h2 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-extrabold tracking-tight text-slate-900 max-w-3xl mx-auto leading-tight">
           Cross-border engineering squads deployed worldwide.
         </h2>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 overflow-hidden max-h-[340px] sm:max-h-[420px]">
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 overflow-hidden max-h-[340px] sm:max-h-[460px] lg:max-h-[540px] 2xl:max-h-[620px]">
         <WorldMap
           lineColor="#fe2c6a"
           gradientStart="#fe2c6a"

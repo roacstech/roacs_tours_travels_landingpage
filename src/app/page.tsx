@@ -14,7 +14,7 @@ export default function Home() {
       {/* ================= ATMOSPHERE & LIGHTING ================= */}
       {/* 1. Top Primary Ambient Glow (Brand Blue & Teal hues) */}
       <div 
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] rounded-full opacity-60 blur-3xl z-0"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[1000px] 2xl:w-[1500px] h-[600px] 2xl:h-[800px] rounded-full opacity-60 blur-3xl z-0"
         style={{
           background: "radial-gradient(ellipse at center, rgba(37, 99, 235, 0.16), rgba(13, 148, 136, 0.10), transparent 70%)",
         }}
@@ -22,7 +22,7 @@ export default function Home() {
 
       {/* 2. Delicate Precision Engineering Grid (Fades out naturally) */}
       <div 
-        className="pointer-events-none absolute inset-0 z-0 h-[850px]"
+        className="pointer-events-none absolute inset-0 z-0 h-[850px] 2xl:h-[1000px]"
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(148, 163, 184, 0.12) 1px, transparent 1px),
@@ -36,7 +36,7 @@ export default function Home() {
 
       {/* 3. Subtle Mid-Page Ambient Light Bloom behind Portfolio */}
       <div 
-        className="pointer-events-none absolute top-[1100px] left-1/2 -translate-x-1/2 w-[1100px] h-[650px] rounded-full opacity-35 blur-3xl z-0"
+        className="pointer-events-none absolute top-[1100px] 2xl:top-[1300px] left-1/2 -translate-x-1/2 w-[1100px] 2xl:w-[1600px] h-[650px] 2xl:h-[850px] rounded-full opacity-35 blur-3xl z-0"
         style={{
           background: "radial-gradient(ellipse at center, rgba(56, 189, 248, 0.12), rgba(99, 102, 241, 0.05), transparent 70%)",
         }}
@@ -44,7 +44,7 @@ export default function Home() {
 
       {/* 4. Soft Bottom Glow for Global Footprint Map */}
       <div 
-        className="pointer-events-none absolute bottom-32 left-1/2 -translate-x-1/2 w-[900px] h-[450px] rounded-full opacity-30 blur-3xl z-0"
+        className="pointer-events-none absolute bottom-32 left-1/2 -translate-x-1/2 w-[900px] 2xl:w-[1400px] h-[450px] 2xl:h-[650px] rounded-full opacity-30 blur-3xl z-0"
         style={{
           background: "radial-gradient(ellipse at center, rgba(254, 44, 106, 0.09), rgba(249, 115, 22, 0.06), transparent 70%)",
         }}

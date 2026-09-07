@@ -56,35 +56,35 @@ const metrics = [
 
 export default function MetricsBar() {
   return (
-    <section className="relative w-full border-t border-slate-200/80 bg-slate-50/50 pt-8 pb-4 sm:pt-10 sm:pb-6">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full border-t border-slate-200/80 bg-slate-50/50 pt-12 pb-8 sm:pt-16 sm:pb-12">
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
         
         {/* Elevated Editorial Header */}
-        <div className="flex flex-col items-center justify-center mb-6 sm:mb-8 px-4 text-center">
-          <div className="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200/90 shadow-2xs mb-2">
-            <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-slate-700">
+        <div className="flex flex-col items-center justify-center mb-8 sm:mb-12 px-4 text-center">
+          <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-sm mb-3">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700">
               Delivery Track Record
             </span>
           </div>
-          <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-900 max-w-xl mx-auto leading-snug">
+          <h2 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-extrabold tracking-tight text-slate-900 max-w-3xl mx-auto leading-tight">
             Measurable results delivered at scale.
           </h2>
         </div>
 
         {/* 4 Clean Animated Counters: 4 cols on desktop, 2x2 on mobile */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 2xl:gap-12">
           {metrics.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center justify-center text-center"
+              className="flex flex-col items-center justify-center text-center px-2"
             >
               {/* Animated Counting Number */}
-              <div className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-center text-teal-600">
+              <div className="text-4xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-black tracking-tight text-center text-teal-600">
                 <AnimatedCounter value={item.target} suffix={item.suffix} />
               </div>
 
               {/* Stat Label */}
-              <div className="text-xs sm:text-sm font-bold text-slate-800 mt-2 tracking-tight text-center">
+              <div className="text-sm sm:text-base lg:text-lg font-bold text-slate-800 mt-2.5 sm:mt-3 tracking-tight text-center">
                 {item.label}
               </div>
             </div>

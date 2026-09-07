@@ -18,7 +18,7 @@ export default function ReadyToStart() {
   };
 
   return (
-    <section className="w-full py-12 sm:py-16 px-4 bg-gradient-to-r from-[#e11d48] via-[#fe2c6a] to-[#f97316] relative overflow-hidden">
+    <section className="w-full py-14 sm:py-20 px-4 bg-gradient-to-r from-[#e11d48] via-[#fe2c6a] to-[#f97316] relative overflow-hidden">
       {/* Subtle depth lighting */}
       <div 
         className="pointer-events-none absolute inset-0 opacity-15 mix-blend-overlay"
@@ -27,15 +27,15 @@ export default function ReadyToStart() {
         }}
       />
 
-      <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-wider text-white uppercase leading-tight">
+      <div className="relative z-10 max-w-5xl 2xl:max-w-6xl mx-auto flex flex-col items-center justify-center text-center">
+        <h2 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl 2xl:text-5xl font-black tracking-wider text-white uppercase leading-tight">
           SO, READY TO START?
         </h2>
 
         <a
           href="#inquiry-form"
           onClick={scrollToForm}
-          className="mt-5 sm:mt-6 inline-flex items-center justify-center px-8 py-3 rounded-lg bg-white text-slate-900 hover:bg-slate-100 hover:text-black font-bold text-xs sm:text-sm tracking-widest uppercase shadow-md hover:shadow-xl hover:scale-105 active:scale-98 transition-all duration-200 cursor-pointer"
+          className="mt-6 sm:mt-8 inline-flex items-center justify-center px-10 sm:px-14 py-4 sm:py-5 rounded-2xl bg-white text-slate-900 hover:bg-slate-100 hover:text-black font-extrabold text-sm sm:text-base 2xl:text-lg tracking-widest uppercase shadow-lg hover:shadow-2xl hover:scale-105 active:scale-98 transition-all duration-200 cursor-pointer"
         >
           GET IN TOUCH
         </a>

@@ -82,11 +82,11 @@ export function TestimonialsWithCarousel() {
   };
 
   return (
-    <section className="w-full pt-4 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section className="w-full pt-4 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 2xl:px-12 bg-slate-50/50 overflow-hidden">
+      <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto">
         
         {/* Contained Laser-Etched Line */}
-        <div className="max-w-5xl mx-auto h-px bg-gradient-to-r from-transparent via-slate-300/80 to-transparent mb-6 sm:mb-8" />
+        <div className="max-w-7xl 2xl:max-w-[1440px] mx-auto h-px bg-gradient-to-r from-transparent via-slate-300/80 to-transparent mb-6 sm:mb-8" />
 
         {/* Header with Centered Title & Navigation Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4 sm:mb-6 px-2">
@@ -95,29 +95,29 @@ export function TestimonialsWithCarousel() {
 
           {/* Centered Editorial Heading */}
           <div className="flex-1 text-center">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-white border border-slate-200/90 shadow-2xs mb-2">
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-slate-700">
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-sm mb-3">
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-700">
                 Testimonials
               </span>
             </div>
-            <h2 className="text-lg sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-900 max-w-xl mx-auto leading-snug">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-extrabold tracking-tight text-slate-900 max-w-3xl mx-auto leading-tight">
               Trusted by visionary founders
             </h2>
           </div>
 
           {/* Carousel Manual Navigation Arrows */}
-          <div className="flex items-center justify-center gap-2 shrink-0">
+          <div className="flex items-center justify-center gap-2.5 shrink-0">
             <button
               type="button"
               onClick={() => scroll("left")}
               aria-label="Previous testimonials"
-              className="flex size-9 sm:size-10 items-center justify-center rounded-full border border-slate-300/80 bg-white text-slate-700 transition duration-200 hover:bg-slate-100 hover:text-slate-900 active:scale-95 cursor-pointer shadow-2xs"
+              className="flex size-10 sm:size-11 items-center justify-center rounded-full border border-slate-300/80 bg-white text-slate-700 transition duration-200 hover:bg-slate-100 hover:text-slate-900 active:scale-95 cursor-pointer shadow-sm"
             >
               <svg
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                className="size-4 sm:size-5"
+                className="size-5 sm:size-6"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -131,13 +131,13 @@ export function TestimonialsWithCarousel() {
               type="button"
               onClick={() => scroll("right")}
               aria-label="Next testimonials"
-              className="flex size-9 sm:size-10 items-center justify-center rounded-full border border-slate-300/80 bg-white text-slate-700 transition duration-200 hover:bg-slate-100 hover:text-slate-900 active:scale-95 cursor-pointer shadow-2xs"
+              className="flex size-10 sm:size-11 items-center justify-center rounded-full border border-slate-300/80 bg-white text-slate-700 transition duration-200 hover:bg-slate-100 hover:text-slate-900 active:scale-95 cursor-pointer shadow-sm"
             >
               <svg
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                className="size-4 sm:size-5"
+                className="size-5 sm:size-6"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -159,7 +159,7 @@ export function TestimonialsWithCarousel() {
           {testimonials.map((item, idx) => (
             <div
               key={idx}
-              className="relative w-[85vw] max-w-[340px] sm:w-[calc((100%-20px)/2)] sm:max-w-none lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-[#ea9e2c] rounded-[28px] p-6 sm:p-7 pt-7 sm:pt-8 text-white shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between select-none min-h-[220px] sm:min-h-[230px]"
+              className="relative w-[85vw] max-w-[360px] sm:w-[calc((100%-20px)/2)] sm:max-w-none lg:w-[calc((100%-48px)/3)] shrink-0 snap-start bg-[#ea9e2c] rounded-[32px] p-7 sm:p-8 pt-8 sm:pt-9 text-white shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between select-none min-h-[250px] sm:min-h-[265px]"
             >
               {/* Top-Left Overlapping Circular Avatar */}
               <div className="absolute -top-7 sm:-top-8 left-6 sm:left-7 size-18 sm:size-20 rounded-full border-4 border-white shadow-md overflow-hidden bg-white shrink-0">
@@ -177,16 +177,16 @@ export function TestimonialsWithCarousel() {
 
               {/* Header (Name & Role) offset to accommodate avatar */}
               <div className="pl-18 sm:pl-20 pr-8 min-h-[48px] flex flex-col justify-center">
-                <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight">
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
                   {item.name}
                 </h3>
-                <p className="text-[11px] sm:text-xs font-semibold text-white/85 mt-0.5">
+                <p className="text-xs sm:text-sm font-semibold text-white/90 mt-0.5">
                   {item.role}
                 </p>
               </div>
 
               {/* Body Quote Text */}
-              <p className="mt-4 sm:mt-5 text-xs sm:text-[13.5px] font-normal text-white/95 leading-relaxed">
+              <p className="mt-5 sm:mt-6 text-sm sm:text-base lg:text-[16.5px] font-medium text-white/95 leading-relaxed">
                 &ldquo;{item.quote}&rdquo;
               </p>
             </div>

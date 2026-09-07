@@ -76,7 +76,7 @@ function AnimatedFeatureIcon({
 
       {/* Main Gradient Icon Circle */}
       <div
-        className={`relative z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md ${item.shadow} transition-transform duration-300 ${
+        className={`relative z-10 w-9 h-9 sm:w-10 sm:h-10 2xl:w-11 2xl:h-11 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md ${item.shadow} transition-transform duration-300 ${
           active ? "scale-105" : "group-hover:scale-105"
         }`}
       >
@@ -89,7 +89,7 @@ function AnimatedFeatureIcon({
             }
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Smartphone className="w-4 h-4 sm:w-[17px] sm:h-[17px]" />
+            <Smartphone className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
           </motion.div>
         )}
 
@@ -106,7 +106,7 @@ function AnimatedFeatureIcon({
                 : { duration: 3, repeat: Infinity, ease: "easeInOut" }
             }
           >
-            <Settings className="w-4 h-4 sm:w-[17px] sm:h-[17px]" />
+            <Settings className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
           </motion.div>
         )}
 
@@ -119,7 +119,7 @@ function AnimatedFeatureIcon({
             }
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Headset className="w-4 h-4 sm:w-[17px] sm:h-[17px]" />
+            <Headset className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
           </motion.div>
         )}
       </div>
@@ -353,21 +353,21 @@ export default function Hero() {
       </div>
 
       {/* Top Left Brand Logo */}
-      <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-5 sm:mb-7">
+      <div className="relative z-20 max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 mb-4 sm:mb-6 lg:mb-8">
         <Link href="/" className="inline-block group">
           <Image
             src="/roacs-logo.png"
             alt="Roacs Corporation"
-            width={130}
-            height={38}
-            className="h-7 sm:h-8 w-auto object-contain transition-transform group-hover:scale-105"
+            width={140}
+            height={42}
+            className="h-7 sm:h-8 lg:h-9 2xl:h-10 w-auto object-contain transition-transform group-hover:scale-105"
             priority
           />
         </Link>
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div className="relative z-10 max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 2xl:gap-18 items-center">
           
           {/* ================= LEFT SIDE: Content ================= */}
           <motion.div
@@ -376,8 +376,8 @@ export default function Hero() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="lg:col-span-7 flex flex-col text-center lg:text-left items-center lg:items-start"
           >
-            {/* Hero Heading */}
-            <h1 className="text-2xl sm:text-3xl lg:text-[2.1rem] xl:text-[2.5rem] font-black tracking-tight text-slate-900 leading-[1.2] text-center lg:text-left">
+            {/* Hero Heading - Bold, commanding typography across mobile and desktop */}
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-black tracking-tight text-slate-900 leading-[1.14] sm:leading-[1.1] text-center lg:text-left">
               Launch Your
               <span className="block my-1 sm:my-1.5 min-h-[1.25em] sm:min-h-[1.3em]">
                 <AnimatePresence mode="wait">
@@ -399,14 +399,14 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-xl text-center lg:text-left mx-auto lg:mx-0 font-normal">
+            <p className="mt-5 text-base sm:text-lg lg:text-xl 2xl:text-2xl text-slate-600 leading-relaxed max-w-2xl 2xl:max-w-3xl text-center lg:text-left mx-auto lg:mx-0 font-normal">
               High-converting, mobile-ready websites built for travel agencies and tour operators. Go live in 72 hours with unlimited pages and 24/7 tech support.
             </p>
 
-            {/* Animated Feature Strip (No White Card Container) */}
-            <div className="mt-6 sm:mt-7 w-full">
+            {/* Animated Feature Strip */}
+            <div className="mt-7 sm:mt-8 2xl:mt-10 w-full">
               {/* Desktop 3-column with spacious layout */}
-              <div className="hidden sm:flex sm:items-center gap-6 md:gap-8 lg:gap-10">
+              <div className="hidden sm:flex sm:items-center gap-6 md:gap-8 lg:gap-8 xl:gap-10 2xl:gap-12">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
@@ -417,7 +417,7 @@ export default function Hero() {
                     >
                       <AnimatedFeatureIcon active={isActive} item={item} />
                       <div className="text-left">
-                        <div className="text-xs sm:text-[13.5px] font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors whitespace-nowrap">
+                        <div className="text-sm sm:text-base lg:text-[16px] 2xl:text-lg font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors whitespace-nowrap">
                           {item.label}
                         </div>
                       </div>
@@ -426,19 +426,19 @@ export default function Hero() {
                 })}
               </div>
 
-              {/* Mobile clean flex wrap */}
-              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 sm:hidden">
+              {/* Mobile clean flex wrap centered */}
+              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3.5 sm:hidden">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
                     <div
                       key={item.id}
                       onClick={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-3 py-1 cursor-pointer"
+                      className="flex items-center gap-2.5 py-1 cursor-pointer"
                     >
                       <AnimatedFeatureIcon active={isActive} item={item} />
                       <div className="text-left min-w-0">
-                        <div className="text-xs font-bold text-slate-800 leading-tight whitespace-nowrap">
+                        <div className="text-xs sm:text-sm font-bold text-slate-800 leading-tight whitespace-nowrap">
                           {item.label}
                         </div>
                       </div>
@@ -456,9 +456,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none lg:mx-0 mt-2 lg:mt-0 scroll-mt-24"
+            className="lg:col-span-5 w-full max-w-md lg:max-w-lg 2xl:max-w-xl mx-auto lg:mx-0 mt-4 lg:mt-0 scroll-mt-24"
           >
-            <div className="rounded-xl bg-white/90 backdrop-blur-md border border-slate-200/90 p-5 sm:p-6 shadow-[0_15px_35px_rgba(0,0,0,0.06)]">
+            <div className="rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-5 sm:p-6 lg:p-7 2xl:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.07)]">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
@@ -561,22 +561,22 @@ export default function Hero() {
               ) : (
                 <>
                   {/* Form Heading */}
-                  <div className="mb-4 text-center">
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                  <div className="mb-4 sm:mb-5 text-center">
+                    <h3 className="text-xl sm:text-2xl 2xl:text-3xl font-bold text-slate-900 tracking-tight">
                       Contact
                     </h3>
                   </div>
 
                   {/* Only 3 Fields: Name, Email, Message */}
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmit} className="space-y-3.5 2xl:space-y-4">
                   {errorMsg && (
-                    <div className="p-2 rounded-md bg-rose-50 border border-rose-200 text-rose-700 text-xs text-center font-medium">
+                    <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm text-center font-medium">
                       {errorMsg}
                     </div>
                   )}
 
                   <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs sm:text-[13px] 2xl:text-sm font-semibold text-slate-700 mb-1.5">
                       Name *
                     </label>
                     <input
@@ -586,12 +586,12 @@ export default function Hero() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="John Doe"
-                      className="w-full h-9.5 px-3 rounded-md bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#fe2c6a] focus:bg-white focus:ring-2 focus:ring-[#fe2c6a]/20 transition-all"
+                      className="w-full h-10 sm:h-11 2xl:h-12 px-3.5 rounded-lg bg-slate-50 border border-slate-200 text-base sm:text-sm 2xl:text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#fe2c6a] focus:bg-white focus:ring-2 focus:ring-[#fe2c6a]/20 transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs sm:text-[13px] 2xl:text-sm font-semibold text-slate-700 mb-1.5">
                       Email *
                     </label>
                     <input
@@ -600,12 +600,12 @@ export default function Hero() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="john@example.com"
-                      className="w-full h-9.5 px-3 rounded-md bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#fe2c6a] focus:bg-white focus:ring-2 focus:ring-[#fe2c6a]/20 transition-all"
+                      className="w-full h-10 sm:h-11 2xl:h-12 px-3.5 rounded-lg bg-slate-50 border border-slate-200 text-base sm:text-sm 2xl:text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#fe2c6a] focus:bg-white focus:ring-2 focus:ring-[#fe2c6a]/20 transition-all"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold text-slate-700 mb-1">
+                    <label className="block text-xs sm:text-[13px] 2xl:text-sm font-semibold text-slate-700 mb-1.5">
                       Message *
                     </label>
                     <textarea
@@ -614,7 +614,7 @@ export default function Hero() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Tell us briefly about your travel business or website requirements..."
-                      className="w-full p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#fe2c6a] focus:bg-white focus:ring-2 focus:ring-[#fe2c6a]/20 transition-all resize-none"
+                      className="w-full p-3 sm:p-3.5 2xl:p-4 rounded-lg bg-slate-50 border border-slate-200 text-base sm:text-sm 2xl:text-base text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#fe2c6a] focus:bg-white focus:ring-2 focus:ring-[#fe2c6a]/20 transition-all resize-none"
                     />
                   </div>
 
@@ -622,25 +622,25 @@ export default function Hero() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full group relative inline-flex items-center justify-center gap-1.5 h-10 rounded-md text-xs sm:text-sm font-bold text-white shadow-md shadow-pink-500/20 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/30 active:scale-95 mt-1 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
+                    className="w-full group relative inline-flex items-center justify-center gap-2 h-11 sm:h-12 2xl:h-13 rounded-lg text-sm sm:text-base font-bold text-white shadow-md shadow-pink-500/20 overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/30 active:scale-98 mt-1 cursor-pointer disabled:opacity-75 disabled:cursor-not-allowed"
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-[#fe2c6a] to-[#f98337] rounded-md transition-all group-hover:brightness-110" />
-                    <span className="relative z-10 flex items-center gap-1.5">
+                    <span className="absolute inset-0 bg-gradient-to-r from-[#fe2c6a] to-[#f98337] rounded-lg transition-all group-hover:brightness-110" />
+                    <span className="relative z-10 flex items-center gap-2">
                       {loading ? (
                         <>
-                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          <Loader2 className="w-4 h-4 animate-spin" />
                           Sending Inquiry...
                         </>
                       ) : (
                         <>
                           Send Inquiry
-                          <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                         </>
                       )}
                     </span>
                   </button>
 
-                  <p className="text-[10px] text-center text-slate-400 pt-0.5">
+                  <p className="text-[11px] 2xl:text-xs text-center text-slate-400 pt-1">
                     🔒 100% Confidential • NDA Protected
                   </p>
                 </form>
