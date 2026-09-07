@@ -51,18 +51,23 @@ function AnimatedFeatureIcon({
       {/* Clean, visible beacon ping when active */}
       {active && (
         <>
-          {/* Subtle soft backdrop halo */}
-          <span
-            className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.gradient} opacity-25 filter blur-[3px] pointer-events-none`}
-          />
-          {/* Smooth expanding radar ring */}
+          {/* Subtle soft backdrop halo that breathes smoothly */}
           <motion.span
-            initial={{ scale: 0.9, opacity: 0.55 }}
-            animate={{ scale: 1.45, opacity: 0 }}
+            animate={{ opacity: [0.12, 0.28, 0.12] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.gradient} filter blur-[3px] pointer-events-none`}
+          />
+          {/* Smooth expanding radar ring that loops seamlessly with zero flashing */}
+          <motion.span
+            animate={{
+              scale: [0.95, 1.42],
+              opacity: [0, 0.45, 0],
+            }}
             transition={{
-              duration: 1.8,
+              duration: 1.6,
               repeat: Infinity,
-              ease: "easeOut",
+              ease: "easeInOut",
+              times: [0, 0.35, 1],
             }}
             className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.gradient} pointer-events-none`}
           />
