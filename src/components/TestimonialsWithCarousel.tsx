@@ -100,7 +100,7 @@ export function TestimonialsWithCarousel() {
                 Testimonials
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-extrabold tracking-tight text-slate-900 max-w-3xl mx-auto leading-tight">
+            <h2 className="text-2xl sm:text-2xl lg:text-3xl 2xl:text-4xl font-extrabold tracking-tight text-slate-900 max-w-3xl mx-auto leading-tight">
               Trusted by visionary founders
             </h2>
           </div>
