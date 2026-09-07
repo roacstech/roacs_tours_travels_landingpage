@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Rocket, Smartphone, Settings, Headset, CheckCircle2, Loader2, Clock, Mail, RotateCcw } from "lucide-react";
+import { ArrowUpRight, Smartphone, Settings, Headset, CheckCircle2, Loader2, Clock, Mail, RotateCcw } from "lucide-react";
 
 const TRAVEL_CATEGORIES = [
   "Tours & Travels",
@@ -16,13 +16,6 @@ const TRAVEL_CATEGORIES = [
 ];
 
 const FEATURE_ITEMS = [
-  {
-    id: "launch",
-    icon: Rocket,
-    label: "Launch in 72 Hrs",
-    gradient: "from-[#fe2c6a] to-[#f43f5e]",
-    shadow: "shadow-pink-500/25",
-  },
   {
     id: "mobile",
     icon: Smartphone,
@@ -47,61 +40,55 @@ const FEATURE_ITEMS = [
 ];
 
 function AnimatedFeatureIcon({
-  idx,
   active,
   item,
 }: {
-  idx: number;
   active: boolean;
   item: typeof FEATURE_ITEMS[0];
 }) {
-  const Icon = item.icon;
-
   return (
     <div className="relative shrink-0 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center">
-      {/* Gentle, contained radiating pulse that stays well within bounds */}
+      {/* Clean, visible beacon ping when active */}
       {active && (
-        <motion.span
-          initial={{ scale: 0.95, opacity: 0.5 }}
-          animate={{ scale: 1.25, opacity: 0 }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
-          className={`absolute inset-0.5 rounded-full bg-gradient-to-br ${item.gradient} pointer-events-none`}
-        />
+        <>
+          {/* Subtle soft backdrop halo */}
+          <span
+            className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.gradient} opacity-25 filter blur-[3px] pointer-events-none`}
+          />
+          {/* Smooth expanding radar ring */}
+          <motion.span
+            initial={{ scale: 0.9, opacity: 0.55 }}
+            animate={{ scale: 1.45, opacity: 0 }}
+            transition={{
+              duration: 1.8,
+              repeat: Infinity,
+              ease: "easeOut",
+            }}
+            className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.gradient} pointer-events-none`}
+          />
+        </>
       )}
 
       {/* Main Gradient Icon Circle */}
       <div
-        className={`relative z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-sm ${item.shadow} transition-transform duration-300 ${
+        className={`relative z-10 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center text-white shadow-md ${item.shadow} transition-transform duration-300 ${
           active ? "scale-105" : "group-hover:scale-105"
         }`}
       >
-        {idx === 0 && (
+        {item.id === "mobile" && (
           <motion.div
             animate={
               active
-                ? { y: [0, -3, 0], rotate: [0, -4, 0] }
-                : { y: 0, rotate: 0 }
-            }
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Rocket className="w-4 h-4 sm:w-[17px] sm:h-[17px]" />
-          </motion.div>
-        )}
-
-        {idx === 1 && (
-          <motion.div
-            animate={
-              active
-                ? { scale: [1, 1.14, 1] }
+                ? { scale: [1, 1.12, 1] }
                 : { scale: 1 }
             }
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           >
             <Smartphone className="w-4 h-4 sm:w-[17px] sm:h-[17px]" />
           </motion.div>
         )}
 
-        {idx === 2 && (
+        {item.id === "manage" && (
           <motion.div
             animate={
               active
@@ -118,14 +105,14 @@ function AnimatedFeatureIcon({
           </motion.div>
         )}
 
-        {idx === 3 && (
+        {item.id === "support" && (
           <motion.div
             animate={
               active
-                ? { scale: [1, 1.1, 1], rotate: [-4, 4, -4] }
+                ? { scale: [1, 1.12, 1], rotate: [-4, 4, -4] }
                 : { scale: 1, rotate: 0 }
             }
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
           >
             <Headset className="w-4 h-4 sm:w-[17px] sm:h-[17px]" />
           </motion.div>
@@ -188,7 +175,7 @@ export default function Hero() {
 
   useEffect(() => {
     const featureInterval = setInterval(() => {
-      setActiveFeatureIdx((prev) => (prev + 1) % 4);
+      setActiveFeatureIdx((prev) => (prev + 1) % FEATURE_ITEMS.length);
     }, 3200);
     return () => clearInterval(featureInterval);
   }, []);
@@ -270,19 +257,19 @@ export default function Hero() {
 
             {/* Animated Feature Strip (No White Card Container) */}
             <div className="mt-6 sm:mt-7 w-full">
-              {/* Desktop 4-column */}
-              <div className="hidden sm:flex sm:items-center sm:justify-between gap-4">
+              {/* Desktop 3-column with spacious layout */}
+              <div className="hidden sm:flex sm:items-center gap-6 md:gap-8 lg:gap-10">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
                     <div
                       key={item.id}
                       onMouseEnter={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-3.5 py-1 cursor-pointer group"
+                      className="flex items-center gap-3.5 py-1.5 cursor-pointer group"
                     >
-                      <AnimatedFeatureIcon idx={idx} active={isActive} item={item} />
+                      <AnimatedFeatureIcon active={isActive} item={item} />
                       <div className="text-left">
-                        <div className="text-xs sm:text-[13px] font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors whitespace-nowrap">
+                        <div className="text-xs sm:text-[13.5px] font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors whitespace-nowrap">
                           {item.label}
                         </div>
                       </div>
@@ -291,8 +278,8 @@ export default function Hero() {
                 })}
               </div>
 
-              {/* Mobile clean 2x2 grid */}
-              <div className="grid grid-cols-2 gap-x-5 gap-y-3 sm:hidden">
+              {/* Mobile clean flex wrap */}
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-3 sm:hidden">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
@@ -301,9 +288,9 @@ export default function Hero() {
                       onClick={() => setActiveFeatureIdx(idx)}
                       className="flex items-center gap-3 py-1 cursor-pointer"
                     >
-                      <AnimatedFeatureIcon idx={idx} active={isActive} item={item} />
+                      <AnimatedFeatureIcon active={isActive} item={item} />
                       <div className="text-left min-w-0">
-                        <div className="text-xs font-bold text-slate-800 leading-tight">
+                        <div className="text-xs font-bold text-slate-800 leading-tight whitespace-nowrap">
                           {item.label}
                         </div>
                       </div>
