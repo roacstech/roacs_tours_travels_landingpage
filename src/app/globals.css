@@ -88,3 +88,10 @@
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Flight Path Dotted Trail Animation */
+@keyframes flightDotsFlow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+

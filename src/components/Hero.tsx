@@ -209,6 +209,149 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-50 to-transparent" />
       </div>
 
+      {/* ================= ANIMATED MULTI-FLIGHT TRAJECTORIES (NO DOTS) ================= */}
+      <div className="absolute inset-0 pointer-events-none z-[1] overflow-hidden">
+        <svg
+          viewBox="0 0 1200 480"
+          fill="none"
+          preserveAspectRatio="xMidYMid slice"
+          className="w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            {/* Gradients for the 3 distinct airplanes */}
+            <linearGradient id="planeGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#fe2c6a" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
+
+            <linearGradient id="planeGradSky" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0284c7" />
+              <stop offset="100%" stopColor="#38bdf8" />
+            </linearGradient>
+
+            <linearGradient id="planeGradSunset" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#f43f5e" />
+              <stop offset="100%" stopColor="#fb923c" />
+            </linearGradient>
+
+            {/* Subtle Glow Filters */}
+            <filter id="planeGlowPrimary" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#fe2c6a" floodOpacity="0.4" />
+            </filter>
+            <filter id="planeGlowSky" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#0284c7" floodOpacity="0.4" />
+            </filter>
+            <filter id="planeGlowSunset" x="-50%" y="-50%" width="200%" height="200%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="#f43f5e" floodOpacity="0.4" />
+            </filter>
+
+            {/* Flight Motion Trajectories (Smooth monotonic curves, no angle wobble) */}
+            {/* 1. Primary Flight: Southwest to Northeast ascent */}
+            <path id="flight-route-1" d="M -120 380 C 320 400, 720 190, 1320 50" />
+
+            {/* 2. High Altitude Flight: Northwest to East/Southeast gentle cruise */}
+            <path id="flight-route-2" d="M -120 90 C 380 70, 800 160, 1320 220" />
+
+            {/* 3. Opposite Direction Return Flight: East/Southeast to Northwest */}
+            <path id="flight-route-3" d="M 1320 340 C 900 310, 480 180, -120 110" />
+          </defs>
+
+          {/* FLIGHT 1: SW -> NE Ascent (Brand Primary Rose/Orange) */}
+          <g>
+            <animateMotion
+              dur="38s"
+              repeatCount="indefinite"
+              rotate="auto"
+              keyPoints="0; 1; 1"
+              keyTimes="0; 0.88; 1"
+              calcMode="linear"
+            >
+              <mpath href="#flight-route-1" />
+            </animateMotion>
+
+            <animate
+              attributeName="opacity"
+              values="0; 1; 1; 0; 0"
+              keyTimes="0; 0.05; 0.85; 0.88; 1"
+              dur="38s"
+              repeatCount="indefinite"
+              calcMode="linear"
+            />
+
+            <g transform="scale(1) translate(-12, -12)" filter="url(#planeGlowPrimary)">
+              <path
+                d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+                fill="url(#planeGradPrimary)"
+                transform="rotate(90 12 12)"
+              />
+            </g>
+          </g>
+
+          {/* FLIGHT 2: NW -> SE High Altitude Cruise (Sky Blue, slightly smaller scale) */}
+          <g>
+            <animateMotion
+              dur="46s"
+              repeatCount="indefinite"
+              rotate="auto"
+              keyPoints="0; 0; 1; 1"
+              keyTimes="0; 0.12; 0.88; 1"
+              calcMode="linear"
+            >
+              <mpath href="#flight-route-2" />
+            </animateMotion>
+
+            <animate
+              attributeName="opacity"
+              values="0; 0; 0.8; 0.8; 0; 0"
+              keyTimes="0; 0.12; 0.17; 0.85; 0.88; 1"
+              dur="46s"
+              repeatCount="indefinite"
+              calcMode="linear"
+            />
+
+            <g transform="scale(0.75) translate(-12, -12)" filter="url(#planeGlowSky)">
+              <path
+                d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+                fill="url(#planeGradSky)"
+                transform="rotate(90 12 12)"
+              />
+            </g>
+          </g>
+
+          {/* FLIGHT 3: SE -> NW Reverse Crossing Flight (Warm Sunset Coral) */}
+          <g>
+            <animateMotion
+              dur="42s"
+              repeatCount="indefinite"
+              rotate="auto"
+              keyPoints="0; 0; 1; 1"
+              keyTimes="0; 0.22; 0.88; 1"
+              calcMode="linear"
+            >
+              <mpath href="#flight-route-3" />
+            </animateMotion>
+
+            <animate
+              attributeName="opacity"
+              values="0; 0; 0.88; 0.88; 0; 0"
+              keyTimes="0; 0.22; 0.27; 0.85; 0.88; 1"
+              dur="42s"
+              repeatCount="indefinite"
+              calcMode="linear"
+            />
+
+            <g transform="scale(0.82) translate(-12, -12)" filter="url(#planeGlowSunset)">
+              <path
+                d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+                fill="url(#planeGradSunset)"
+                transform="rotate(90 12 12)"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+
       {/* Top Left Brand Logo */}
       <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-5 sm:mb-7">
         <Link href="/" className="inline-block group">
@@ -309,10 +452,11 @@ export default function Hero() {
 
           {/* ================= RIGHT SIDE: Simplified Quick Contact Form ================= */}
           <motion.div
+            id="inquiry-form"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none lg:mx-0 mt-2 lg:mt-0"
+            className="lg:col-span-5 w-full max-w-md mx-auto lg:max-w-none lg:mx-0 mt-2 lg:mt-0 scroll-mt-24"
           >
             <div className="rounded-xl bg-white/90 backdrop-blur-md border border-slate-200/90 p-5 sm:p-6 shadow-[0_15px_35px_rgba(0,0,0,0.06)]">
               {submitted ? (
@@ -436,6 +580,7 @@ export default function Hero() {
                       Name *
                     </label>
                     <input
+                      id="name"
                       type="text"
                       required
                       value={formData.name}

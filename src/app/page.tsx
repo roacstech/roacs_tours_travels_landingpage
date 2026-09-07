@@ -4,6 +4,7 @@ import { BentoGridDemo } from "@/components/BentoGridDemo";
 import { TestimonialsWithCarousel } from "@/components/TestimonialsWithCarousel";
 import { LogoCloudMarquee } from "@/components/LogoCloudMarquee";
 import { WorldMapDemo } from "@/components/WorldMapDemo";
+import ReadyToStart from "@/components/ReadyToStart";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -57,6 +58,7 @@ export default function Home() {
         <TestimonialsWithCarousel />
         <LogoCloudMarquee />
         <WorldMapDemo />
+        <ReadyToStart />
         <Footer />
       </div>
     </main>
