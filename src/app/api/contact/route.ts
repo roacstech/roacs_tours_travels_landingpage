@@ -173,7 +173,7 @@ export async function POST(request: Request) {
         const transporter = nodemailer.createTransport(transportConfig);
 
         await transporter.sendMail({
-          from: `"Roacs Corporation" <${SMTP_USER}>`,
+          from: `"${name} (Roacs Travel Lead)" <${SMTP_USER}>`,
           to: RECIPIENT_EMAIL,
           replyTo: `"${name}" <${email}>`,
           subject: subject || `New Travel Website Inquiry from ${name}`,
