@@ -153,7 +153,7 @@ export default function ContactSection() {
                     <button
                       key={loc.id}
                       type="button"
-                      onClick={() => setActiveLocation(loc.id as any)}
+                      onClick={() => setActiveLocation(loc.id as "india" | "usa" | "chile" | "reunion")}
                       className={`px-2.5 py-1 text-[11px] rounded-md font-semibold transition-all duration-200 cursor-pointer ${
                         isActive
                           ? "bg-gradient-to-r from-blue-600 to-teal-500 text-white shadow-xs"

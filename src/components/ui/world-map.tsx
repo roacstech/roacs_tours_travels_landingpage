@@ -35,7 +35,6 @@ export default function WorldMap({
   const projectPoint = (lat: number, lng: number) => {
     try {
       // Use exact map projection from DottedMap
-      // @ts-ignore
       const pin = typeof map.getPin === "function" ? map.getPin({ lat, lng }) : null;
       if (pin && typeof pin.x === "number" && typeof pin.y === "number") {
         // Map viewBox 200x100 to overlay SVG viewBox 800x400
@@ -44,7 +43,9 @@ export default function WorldMap({
           y: (pin.y / 100) * 400,
         };
       }
-    } catch (e) {}
+    } catch {
+      // Fallback projection below
+    }
 
     const x = (lng + 180) * (800 / 360);
     const y = (90 - lat) * (400 / 180);

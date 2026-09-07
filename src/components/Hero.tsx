@@ -162,7 +162,7 @@ export default function Hero() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          subject: `Hero Inquiry - Travel Website for ${formData.name}`,
+          subject: `New Inquiry - Travel Website for ${formData.name}`,
         }),
       });
 

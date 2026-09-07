@@ -157,7 +157,7 @@ export async function POST(request: Request) {
     // Option 1: If SMTP credentials are provided, send clean white-label email
     if (SMTP_PASS) {
       try {
-        const transportConfig: any = {
+        const transportConfig: Parameters<typeof nodemailer.createTransport>[0] = {
           host: SMTP_HOST,
           port: SMTP_PORT,
           secure: SMTP_SECURE,
@@ -165,10 +165,8 @@ export async function POST(request: Request) {
             user: SMTP_USER,
             pass: SMTP_PASS,
           },
+          ...(SMTP_SERVICE ? { service: SMTP_SERVICE } : {}),
         };
-        if (SMTP_SERVICE) {
-          transportConfig.service = SMTP_SERVICE;
-        }
 
         const transporter = nodemailer.createTransport(transportConfig);
 
@@ -185,7 +183,7 @@ export async function POST(request: Request) {
           message: "Inquiry sent successfully via secure SMTP!",
           mode: "smtp",
         });
-      } catch (smtpError: any) {
+      } catch (smtpError: unknown) {
         console.error("SMTP sending failed, falling back to form endpoint:", smtpError);
       }
     }
@@ -227,7 +225,7 @@ export async function POST(request: Request) {
       mode: "fallback",
       data,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Contact API error:", error);
     return NextResponse.json(
       { error: "Failed to send inquiry. Please try again later." },
