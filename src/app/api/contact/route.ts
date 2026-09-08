@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-export const RECIPIENT_EMAIL = process.env.CONTACT_RECIPIENT_EMAIL || "roacstech@gmail.com";
+const RECIPIENT_EMAIL = process.env.CONTACT_RECIPIENT_EMAIL || "roacstech@gmail.com";
 const SMTP_HOST = process.env.MAIL_HOST || process.env.SMTP_HOST || "smtp.gmail.com";
 const SMTP_PORT = Number(process.env.MAIL_PORT || process.env.SMTP_PORT) || 465;
 const SMTP_SECURE = process.env.MAIL_SECURE !== undefined ? process.env.MAIL_SECURE === "true" : SMTP_PORT === 465;
