@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Smartphone, Settings, Headset, CheckCircle2, Loader2, Clock, Mail, RotateCcw } from "lucide-react";
+import { ArrowUpRight, Smartphone, ShieldCheck, Headset, CheckCircle2, Loader2, Clock, Mail, RotateCcw, ChevronRight } from "lucide-react";
 
 const TRAVEL_CATEGORIES = [
   "Tours & Travels",
@@ -15,27 +15,114 @@ const TRAVEL_CATEGORIES = [
   "Adventure Travel",
 ];
 
+const COUNTRIES_DATA = [
+  {
+    name: "Kenya",
+    code: "KE",
+    flag: (
+      <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 rounded-full shrink-0 shadow-2xs" viewBox="0 0 32 32">
+        <clipPath id="flagCircleKenya"><circle cx="16" cy="16" r="16" /></clipPath>
+        <g clipPath="url(#flagCircleKenya)">
+          <rect width="32" height="10" fill="#000000" />
+          <rect y="10" width="32" height="2" fill="#ffffff" />
+          <rect y="12" width="32" height="8" fill="#bb0000" />
+          <rect y="20" width="32" height="2" fill="#ffffff" />
+          <rect y="22" width="32" height="10" fill="#006600" />
+          <ellipse cx="16" cy="16" rx="3.5" ry="6.5" fill="#800000" stroke="#ffffff" strokeWidth="0.8" />
+          <circle cx="16" cy="16" r="1.2" fill="#ffffff" />
+        </g>
+      </svg>
+    ),
+  },
+  {
+    name: "USA",
+    code: "US",
+    flag: (
+      <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 rounded-full shrink-0 shadow-2xs" viewBox="0 0 32 32">
+        <clipPath id="flagCircleUSA"><circle cx="16" cy="16" r="16" /></clipPath>
+        <g clipPath="url(#flagCircleUSA)">
+          <rect width="32" height="32" fill="#b22234" />
+          <rect y="2.5" width="32" height="2.5" fill="#ffffff" />
+          <rect y="7.5" width="32" height="2.5" fill="#ffffff" />
+          <rect y="12.5" width="32" height="2.5" fill="#ffffff" />
+          <rect y="17.5" width="32" height="2.5" fill="#ffffff" />
+          <rect y="22.5" width="32" height="2.5" fill="#ffffff" />
+          <rect y="27.5" width="32" height="2.5" fill="#ffffff" />
+          <rect width="14" height="15" fill="#3c3b6e" />
+          <circle cx="4" cy="4" r="0.9" fill="#ffffff" />
+          <circle cx="10" cy="4" r="0.9" fill="#ffffff" />
+          <circle cx="7" cy="7.5" r="0.9" fill="#ffffff" />
+          <circle cx="4" cy="11" r="0.9" fill="#ffffff" />
+          <circle cx="10" cy="11" r="0.9" fill="#ffffff" />
+        </g>
+      </svg>
+    ),
+  },
+  {
+    name: "Chile",
+    code: "CL",
+    flag: (
+      <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 rounded-full shrink-0 shadow-2xs" viewBox="0 0 32 32">
+        <clipPath id="flagCircleChile"><circle cx="16" cy="16" r="16" /></clipPath>
+        <g clipPath="url(#flagCircleChile)">
+          <rect width="32" height="16" fill="#ffffff" />
+          <rect y="16" width="32" height="16" fill="#d52b1e" />
+          <rect width="14" height="16" fill="#0039a6" />
+          <path
+            d="M7 4.5l1.2 3.8h4l-3.2 2.3 1.2 3.8-3.2-2.4-3.2 2.4 1.2-3.8-3.2-2.3h4z"
+            fill="#ffffff"
+            transform="scale(0.8) translate(1.8, 1.8)"
+          />
+        </g>
+      </svg>
+    ),
+  },
+  {
+    name: "India",
+    code: "IN",
+    flag: (
+      <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 rounded-full shrink-0 shadow-2xs" viewBox="0 0 32 32">
+        <clipPath id="flagCircleIndia"><circle cx="16" cy="16" r="16" /></clipPath>
+        <g clipPath="url(#flagCircleIndia)">
+          <rect width="32" height="10.66" fill="#ff9933" />
+          <rect y="10.66" width="32" height="10.66" fill="#ffffff" />
+          <rect y="21.33" width="32" height="10.66" fill="#138808" />
+          <circle cx="16" cy="16" r="3.6" fill="none" stroke="#000080" strokeWidth="0.9" />
+          <circle cx="16" cy="16" r="0.9" fill="#000080" />
+        </g>
+      </svg>
+    ),
+  },
+];
+
 const FEATURE_ITEMS = [
   {
     id: "mobile",
     icon: Smartphone,
-    label: "Mobile & SEO Ready",
+    label: "100% Mobile Responsive",
     gradient: "from-[#10b981] to-[#059669]",
     shadow: "shadow-emerald-500/25",
   },
   {
-    id: "manage",
-    icon: Settings,
-    label: "Easy to Manage",
+    id: "confidentiality",
+    icon: ShieldCheck,
+    label: "Data Confidentiality",
     gradient: "from-[#6366f1] to-[#4f46e5]",
     shadow: "shadow-indigo-500/25",
   },
   {
     id: "support",
     icon: Headset,
-    label: "Unlimited Support",
+    label: "Unlimited Technical Support",
     gradient: "from-[#f97316] to-[#ea580c]",
     shadow: "shadow-orange-500/25",
+  },
+  {
+    id: "email",
+    icon: Mail,
+    label: "Professional Domain Email",
+    gradient: "from-[#0284c7] to-[#0369a1]",
+    shadow: "shadow-sky-500/25",
   },
 ];
 
@@ -100,21 +187,17 @@ function AnimatedFeatureIcon({
           </motion.div>
         )}
 
-        {item.id === "manage" && (
+        {item.id === "confidentiality" && (
           <motion.div
             animate={
               active
-                ? { rotate: 360 }
-                : { rotate: [0, 90, 0] }
+                ? { scale: [1, 1.12, 1] }
+                : { scale: 1 }
             }
-            transition={
-              active
-                ? { duration: 5, repeat: Infinity, ease: "linear" }
-                : { duration: 3, repeat: Infinity, ease: "easeInOut" }
-            }
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
             className="flex items-center justify-center leading-none"
           >
-            <Settings className="w-5 h-5 sm:w-5 sm:h-5 2xl:w-6 2xl:h-6 block shrink-0" />
+            <ShieldCheck className="w-5 h-5 sm:w-5 sm:h-5 2xl:w-6 2xl:h-6 block shrink-0" />
           </motion.div>
         )}
 
@@ -129,6 +212,20 @@ function AnimatedFeatureIcon({
             className="flex items-center justify-center leading-none"
           >
             <Headset className="w-5 h-5 sm:w-5 sm:h-5 2xl:w-6 2xl:h-6 block shrink-0" />
+          </motion.div>
+        )}
+
+        {item.id === "email" && (
+          <motion.div
+            animate={
+              active
+                ? { scale: [1, 1.12, 1], y: [-2, 2, -2] }
+                : { scale: 1, y: 0 }
+            }
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            className="flex items-center justify-center leading-none"
+          >
+            <Mail className="w-5 h-5 sm:w-5 sm:h-5 2xl:w-6 2xl:h-6 block shrink-0" />
           </motion.div>
         )}
       </div>
@@ -361,22 +458,42 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Top Left Brand Logo */}
-      <div className="relative z-20 max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 mb-4 sm:mb-6 lg:mb-8">
-        <Link href="/" className="inline-block group">
+      {/* Top Header: Logo on Left, Country Flow on Right End Side (Clean & Fully Mobile Responsive) */}
+      <div className="relative z-20 max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12 mb-4 sm:mb-6 lg:mb-8 flex items-center justify-between gap-2 sm:gap-6 lg:gap-12">
+        <Link href="/" className="inline-block group shrink-0">
           <Image
             src="/roacs-logo.png"
             alt="Roacs Corporation"
             width={140}
             height={42}
-            className="h-7 sm:h-8 lg:h-9 2xl:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+            className="h-6 sm:h-8 lg:h-9 2xl:h-10 w-auto object-contain transition-transform group-hover:scale-105"
             priority
           />
         </Link>
+
+        {/* Global Countries: Just Flag and Text (Pure Static, Clean & Fully Mobile Responsive) */}
+        <div className="flex items-center gap-2.5 sm:gap-4 md:gap-6 lg:gap-8 shrink-0 select-none">
+          {COUNTRIES_DATA.map((item) => (
+            <div
+              key={item.name}
+              className="flex items-center gap-1 sm:gap-1.5 md:gap-2 select-none"
+            >
+              {/* Flag Icon */}
+              <span className="flex items-center drop-shadow-2xs shrink-0">
+                {item.flag}
+              </span>
+
+              {/* Country Name: Solid Black Text */}
+              <span className="text-[10px] sm:text-xs md:text-sm font-black tracking-wide sm:tracking-wider uppercase text-slate-950">
+                {item.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="relative z-10 max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 2xl:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 2xl:gap-18 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 items-center">
           
           {/* ================= LEFT SIDE: Content ================= */}
           <motion.div
@@ -413,20 +530,20 @@ export default function Hero() {
             </p>
 
             {/* Animated Feature Strip */}
-            <div className="mt-7 sm:mt-8 2xl:mt-10 w-full">
-              {/* Desktop 3-column with spacious layout and clean wrapping on compact screens */}
-              <div className="hidden sm:flex sm:flex-wrap items-center gap-4 sm:gap-6 lg:gap-5 xl:gap-8 2xl:gap-10">
+            <div className="mt-7 sm:mt-8 2xl:mt-10 w-full max-w-2xl 2xl:max-w-3xl">
+              {/* Tablet & Desktop 2x2 Grid with wide center spacing */}
+              <div className="hidden sm:grid sm:grid-cols-2 gap-x-10 sm:gap-x-12 lg:gap-x-14 xl:gap-x-16 gap-y-4 sm:gap-y-4.5">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
                     <div
                       key={item.id}
                       onMouseEnter={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-3.5 py-1.5 cursor-pointer group flex-none"
+                      className="flex items-center gap-3.5 py-1 cursor-pointer group"
                     >
                       <AnimatedFeatureIcon active={isActive} item={item} />
-                      <div className="text-left">
-                        <div className="text-sm sm:text-base lg:text-[16px] 2xl:text-lg font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors whitespace-nowrap">
+                      <div className="text-left min-w-0">
+                        <div className="text-sm sm:text-base lg:text-[15px] 2xl:text-[16px] font-bold tracking-tight text-slate-800 group-hover:text-slate-900 transition-colors whitespace-nowrap">
                           {item.label}
                         </div>
                       </div>
@@ -435,15 +552,15 @@ export default function Hero() {
                 })}
               </div>
 
-              {/* Mobile clean flex wrap centered */}
-              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3 sm:hidden">
+              {/* Mobile clean responsive list */}
+              <div className="grid grid-cols-1 gap-y-2.5 sm:hidden max-w-xs mx-auto">
                 {FEATURE_ITEMS.map((item, idx) => {
                   const isActive = activeFeatureIdx === idx;
                   return (
                     <div
                       key={item.id}
                       onClick={() => setActiveFeatureIdx(idx)}
-                      className="flex items-center gap-2.5 py-1 cursor-pointer flex-none"
+                      className="flex items-center gap-3 py-1 cursor-pointer"
                     >
                       <AnimatedFeatureIcon active={isActive} item={item} />
                       <div className="text-left min-w-0">
@@ -572,7 +689,7 @@ export default function Hero() {
                   {/* Form Heading */}
                   <div className="mb-4 sm:mb-5 text-center">
                     <h3 className="text-xl sm:text-2xl 2xl:text-3xl font-bold text-slate-900 tracking-tight">
-                      Contact
+                      Contact Us
                     </h3>
                   </div>
 
