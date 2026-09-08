@@ -584,7 +584,42 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
             className="lg:col-span-5 w-full max-w-md lg:max-w-lg 2xl:max-w-xl mx-auto lg:mx-0 mt-4 lg:mt-0 scroll-mt-24"
           >
-            <div className="rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-5 sm:p-6 lg:p-7 2xl:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.07)]">
+            <div className="relative rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200/90 p-5 sm:p-6 lg:p-7 2xl:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.07)]">
+              {/* Floating Trust Guarantee Badge pinned to corner */}
+              <div className="absolute -top-3.5 right-3 sm:-top-4 sm:-right-3 z-30 select-none pointer-events-none">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.035, 1],
+                    boxShadow: [
+                      "0 4px 12px rgba(254, 44, 106, 0.3)",
+                      "0 6px 20px rgba(254, 44, 106, 0.55)",
+                      "0 4px 12px rgba(254, 44, 106, 0.3)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 1.8,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="relative flex items-center gap-2 sm:gap-2.5 pl-2 pr-3 sm:pl-2.5 sm:pr-3.5 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-[#fe2c6a] to-[#f98337] text-white"
+                >
+                  {/* Shield icon container - dark translucent fill, zero white border or haze */}
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black/15 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-rose-100 stroke-[2.5]" />
+                  </div>
+
+                  {/* Text details */}
+                  <div className="flex flex-col text-left leading-none">
+                    <span className="text-[10px] sm:text-[11px] font-black tracking-wider uppercase text-white drop-shadow-2xs">
+                      100% Refundable
+                    </span>
+                    <span className="text-[8px] sm:text-[9px] text-rose-100 font-medium tracking-tight mt-0.5">
+                      If you&apos;re not satisfied
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
+
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
